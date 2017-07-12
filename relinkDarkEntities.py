@@ -5,6 +5,13 @@
 # June 2016 
 # To do: fix externalreferences formatting to comply with NAF spec
 # To do: Dutch translations for Mr. & Mrs. etc
+from __future__ import (absolute_import, division,
+                        print_function, unicode_literals)
+from builtins import (
+         bytes, dict, int, list, object, range, str,
+         ascii, chr, hex, input, next, oct, open,
+         pow, round, super,
+         filter, map, zip)
 
 from KafNafParserPy import *
 import sys
@@ -12,6 +19,10 @@ import re
 import urllib 
 import datetime
 import fileinput
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
 
 #infile = open(sys.argv[1],"r")
 infile = sys.stdin
@@ -59,7 +70,8 @@ for item in entity_mention:
 	if "NIL" in entity_ref[item]:  
 		darkies[item] = "".join(entity_mention[item])
 #		print >>logNIL, sys.argv[1], darkies[item].encode('utf8')
-		print >>sys.stderr, darkies[item].encode('utf8')
+#		print >>sys.stderr, darkies[item].encode('utf8')
+		eprint(darkies[item].encode('utf8'))
 	else:
 		enlightened[item] = "".join(entity_mention[item]) 
 
