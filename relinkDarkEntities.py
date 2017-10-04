@@ -16,7 +16,7 @@ from builtins import (
 from KafNafParserPy import *
 import sys
 import re 
-import urllib 
+import urllib.parse 
 import datetime
 import fileinput
 
@@ -188,7 +188,7 @@ for item in darkies.keys():
 				else:
 					reference = 'newsreader_entity-' + darkies[entity]
 				reference = reference.rstrip()
-				reference = urllib.quote_plus(reference.encode('utf8'))
+				reference = urllib.parse.quote_plus(reference.encode('utf8'))
 		#		print darkies[item], darkies[entity]
 				externalreferenceslayer = CexternalReferences()
 				new_ext_reference = CexternalReference()
